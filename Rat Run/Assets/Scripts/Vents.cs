@@ -4,24 +4,50 @@ using UnityEngine;
 
 public class Vents : MonoBehaviour
 {
-    private bool ventIsOn = true;
-    
-    private void OnMouseOver()
+    public bool ventIsOn = true;
+    public GameObject MouseOverHighlight;
+    public GameObject ParticleSystem;
+
+    public bool canClick = true;
+    public bool canActivate = true;
+
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (ventIsOn == true)
         {
-            if (ventIsOn == true)
-            {
-                GetComponent<AreaEffector2D>().enabled = false;
-                ventIsOn = false;
-                Debug.Log("Vent is on");
-            }
-            else if (ventIsOn == false)
-            {
-                GetComponent<AreaEffector2D>().enabled = true;
-                ventIsOn = true;
-                Debug.Log("Vent is off");
-            }
+            GetComponent<AreaEffector2D>().enabled = true;
+            ParticleSystem.SetActive(true);
         }
+        else if (ventIsOn == false)
+        {
+            GetComponent<AreaEffector2D>().enabled = false;
+            ParticleSystem.SetActive(false);
+        }
+    }
+
+    private void OnMouseOver()
+    {            
+        RatMovement ratMovement = GameObject.FindWithTag("Rat").GetComponent<RatMovement>();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canClick == true)
+        {
+            if (ventIsOn == false)
+            {
+                ventIsOn = true;
+            }
+            else if (ventIsOn == true)
+            {
+                ventIsOn = false;
+            }
+
+            ratMovement.maxSpeed = 3f;
+        }
+
+        MouseOverHighlight.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        MouseOverHighlight.SetActive(false);
     }
 }

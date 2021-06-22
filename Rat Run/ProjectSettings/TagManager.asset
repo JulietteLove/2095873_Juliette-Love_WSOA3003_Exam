@@ -6,6 +6,17 @@ TagManager:
   tags:
   - DestroyRat
   - Turn
+  - VentBox
+  - Floor
+  - Exit
+  - Hitbox1
+  - Hitbox2
+  - Hitbox3
+  - Rat
+  - Vent
+  - Button
+  - Checkpoint1
+  - EndCheckpoint1
   layers:
   - Default
   - TransparentFX
@@ -15,7 +26,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Wall
   - 
   - 
   - 
