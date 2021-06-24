@@ -14,7 +14,11 @@ public class TrailFollowScript : MonoBehaviour
 
         if (ratMovement.facingRight == false)
         {
-            transform.position = new Vector3(target.transform.position.x + 0.6f, target.transform.position.y, target.transform.position.z);
-        }       
+            transform.position = new Vector2(target.transform.position.x + 0.6f, target.transform.position.y);
+        }
+        else if (ratMovement.facingRight == true)
+        {
+            transform.position = new Vector2(target.transform.position.x - 0.55f, target.transform.position.y);
+        }
     }
 }
