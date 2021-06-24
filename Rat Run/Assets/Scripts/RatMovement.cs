@@ -35,7 +35,7 @@ public class RatMovement : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    void FixedUpdate() //Rat movement
+    void Update() //Rat movement
     {
         CheckWall = Physics2D.OverlapCircle(wallCheckPoint.position, wallCheckRadius, whatIsWall);
 
@@ -90,6 +90,7 @@ public class RatMovement : MonoBehaviour
         if (collision.transform.tag == "Exit") //Exit lvl
         {
             Debug.Log("Restart Level");
+            Time.timeScale = 0f;
             WonScreen.SetActive(true);
         }
     }

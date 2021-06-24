@@ -12,18 +12,6 @@ public class Vents : MonoBehaviour
     public bool canClick = true;
     public bool canActivate = true;
 
-    public void Start()
-    {
-        //Scene currentScene = SceneManager.GetActiveScene();
-        //string sceneName = currentScene.name;
-
-        //if (sceneName == "IntroductionLevel")
-        //{
-        //    canClick = false;
-        //    Debug.Log("canClick = false");
-        //}
-    }
-
     void Update()
     {
         if (ventIsOn == true)

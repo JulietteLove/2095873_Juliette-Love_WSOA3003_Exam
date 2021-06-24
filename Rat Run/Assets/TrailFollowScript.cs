@@ -12,15 +12,9 @@ public class TrailFollowScript : MonoBehaviour
     {
         RatMovement ratMovement = GameObject.FindWithTag("Rat").GetComponent<RatMovement>();
 
-        if (ratMovement.facingRight == true)
+        if (ratMovement.facingRight == false)
         {
-
-        }
-        else if (ratMovement.facingRight == false)
-        {
-            Debug.Log("Rat is facing left");
-            transform.position = new Vector3(target.transform.position.x - 30f, target.transform.position.y, target.transform.position.z);
-        }
-        
+            transform.position = new Vector3(target.transform.position.x + 0.6f, target.transform.position.y, target.transform.position.z);
+        }       
     }
 }
