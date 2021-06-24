@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Vents : MonoBehaviour
 {
@@ -10,6 +11,18 @@ public class Vents : MonoBehaviour
 
     public bool canClick = true;
     public bool canActivate = true;
+
+    public void Start()
+    {
+        //Scene currentScene = SceneManager.GetActiveScene();
+        //string sceneName = currentScene.name;
+
+        //if (sceneName == "IntroductionLevel")
+        //{
+        //    canClick = false;
+        //    Debug.Log("canClick = false");
+        //}
+    }
 
     void Update()
     {
@@ -31,6 +44,7 @@ public class Vents : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && canClick == true)
         {
+            Debug.Log("canClick code has run");
             if (ventIsOn == false)
             {
                 ventIsOn = true;
@@ -41,6 +55,7 @@ public class Vents : MonoBehaviour
             }
 
             ratMovement.maxSpeed = 3f;
+            Debug.Log("AAAAAAAAAAAAAAAAs");
         }
 
         MouseOverHighlight.SetActive(true);

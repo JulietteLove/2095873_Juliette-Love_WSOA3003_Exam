@@ -35,7 +35,7 @@ public class RatMovement : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    void Update()
+    void FixedUpdate() //Rat movement
     {
         CheckWall = Physics2D.OverlapCircle(wallCheckPoint.position, wallCheckRadius, whatIsWall);
 
@@ -50,7 +50,7 @@ public class RatMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) //Exit game
         { 
             Application.Quit();
         }
@@ -59,21 +59,21 @@ public class RatMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Turn")
+        if (collision.transform.tag == "Turn") //Turn rat
         {
-            Debug.Log("Here");
             if (Direction == new Vector2(2, 0))
             {
-                
+                facingRight = false;
                 Direction = new Vector2(-2, 0);
             }
             else if (Direction == new Vector2(-2, 0))
             {
+                facingRight = true;
                 Direction = new Vector2(2, 0);
             }
         }
         
-        if (collision.transform.tag == "DestroyRat")
+        if (collision.transform.tag == "DestroyRat") //Destroy rat
         {
             if (hasReachedCheckPoint != true)
             {
@@ -87,50 +87,49 @@ public class RatMovement : MonoBehaviour
             }
         }
 
-        if (collision.transform.tag == "Exit")
+        if (collision.transform.tag == "Exit") //Exit lvl
         {
             Debug.Log("Restart Level");
             WonScreen.SetActive(true);
-            Time.timeScale = 0f;
         }
     }
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col) //Instruction collisions (lvl 1)
     {
-        Vents vents = GameObject.FindWithTag("Vent").GetComponent<Vents>();
-
         if (col.gameObject.tag == "Hitbox1")
         {
             maxSpeed = 0;
             Instructions1.SetActive(true);
-            
-            vents.canClick = true;
         }
         if (col.gameObject.tag == "Hitbox2")
         {
             maxSpeed = 0;
             Instructions2.SetActive(true);
-
-            vents.canClick = true;
         }
         if (col.gameObject.tag == "Hitbox3")
         {
             maxSpeed = 0;
             Instructions3.SetActive(true);
-
-            vents.canClick = true;
         }
 
-        if (col.gameObject.tag == "Checkpoint1") //Only in third level (Level 2)
+        if (col.gameObject.tag == "Checkpoint1") //Checkpoint collisions
         {
             Debug.Log("Checkpoint 1 set");
             hasReachedCheckPoint = true;
             this.checkpointPosition = this.transform.position;
         }
 
-        if (col.gameObject.tag == "EndCheckpoint1") //Only in third level (Level 2)
+        if (col.gameObject.tag == "EndCheckpoint1")
         {
             Debug.Log("Checkpoint 1 end");
             hasReachedCheckPoint = false;
+        }
+    }
+    void OnTriggerExit2D(Collider2D col) //Delete checkpoint
+    {
+        if (col.gameObject.tag == "Hitbox1")
+        {
+            Vents vents = GameObject.FindWithTag("Vent").GetComponent<Vents>();
+            vents.canClick = true;
         }
     }
 }

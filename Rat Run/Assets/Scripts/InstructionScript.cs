@@ -13,23 +13,16 @@ public class InstructionScript : MonoBehaviour
     public GameObject Hitbox2;
     public GameObject Hitbox3;
 
-    public void Start()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        
-        if (sceneName == "IntroductionLevel")
-        {
-            Vents vents = GameObject.FindWithTag("Vent").GetComponent<Vents>();
-            vents.canClick = false;
-        }
-    }
-
     public void click()
     {
+        Vents vents = GameObject.FindWithTag("Vent").GetComponent<Vents>();
+        vents.canClick = true;
+
+        RatMovement ratMovement = GameObject.FindWithTag("Rat").GetComponent<RatMovement>();
+        ratMovement.maxSpeed = 3f;
+
         Instructions1.SetActive(false);
         Instructions2.SetActive(false);
         Instructions3.SetActive(false);
-        Debug.Log("HasClicked");
     }
 }
