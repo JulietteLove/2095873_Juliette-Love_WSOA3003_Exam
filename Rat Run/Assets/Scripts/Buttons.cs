@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Buttons : MonoBehaviour
 {
     public GameObject credits;
+    
     public void Exit()
     {
         Application.Quit();
@@ -20,6 +21,7 @@ public class Buttons : MonoBehaviour
     {
         credits.SetActive(true);
     }
+
     public void CreditsBack()
     {
         credits.SetActive(false);
@@ -39,5 +41,4 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("Level2");
     }
-
 }

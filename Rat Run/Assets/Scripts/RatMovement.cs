@@ -42,7 +42,6 @@ public class RatMovement : MonoBehaviour
         if (CheckWall == true)
         {
             rb.AddForce(Direction * speed);
-            Debug.Log("This is running");
 
             if (rb.velocity.magnitude > maxSpeed)
             {
@@ -55,7 +54,6 @@ public class RatMovement : MonoBehaviour
             Application.Quit();
         }
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -89,7 +87,6 @@ public class RatMovement : MonoBehaviour
 
         if (collision.transform.tag == "Exit") //Exit lvl
         {
-            Debug.Log("Restart Level");
             Time.timeScale = 0f;
             WonScreen.SetActive(true);
         }
@@ -114,14 +111,12 @@ public class RatMovement : MonoBehaviour
 
         if (col.gameObject.tag == "Checkpoint1") //Checkpoint collisions
         {
-            Debug.Log("Checkpoint 1 set");
             hasReachedCheckPoint = true;
             this.checkpointPosition = this.transform.position;
         }
 
         if (col.gameObject.tag == "EndCheckpoint1")
         {
-            Debug.Log("Checkpoint 1 end");
             hasReachedCheckPoint = false;
         }
     }

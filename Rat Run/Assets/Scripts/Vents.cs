@@ -32,7 +32,6 @@ public class Vents : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && canClick == true)
         {
-            Debug.Log("canClick code has run");
             if (ventIsOn == false)
             {
                 ventIsOn = true;
