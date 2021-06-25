@@ -10,7 +10,10 @@ public class BreakableWall : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite Wall;
 
-    
+    public Sprite sprite1;
+    public Sprite sprite2;
+    public Sprite sprite3;
+
     private void OnMouseOver()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -18,13 +21,13 @@ public class BreakableWall : MonoBehaviour
             clickNumber += 1;
             if (clickNumber == 1)
             {
-                spriteRenderer.color = new Color(0.4528302f, 0.4528302f, 0.4528302f, 1);
-                Debug.Log("One");
+                spriteRenderer.sprite = sprite2;
+                //spriteRenderer.color = new Color(0.4528302f, 0.4528302f, 0.4528302f, 1);
             }
             if (clickNumber == 2)
             {
-                spriteRenderer.color = new Color(0.2641509f, 0.2641509f, 0.2641509f, 1);
-                Debug.Log("Two");
+                spriteRenderer.sprite = sprite3;
+                //spriteRenderer.color = new Color(0.2641509f, 0.2641509f, 0.2641509f, 1);
             }
             if (clickNumber == 3)
             {

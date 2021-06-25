@@ -43,7 +43,6 @@ public class Vents : MonoBehaviour
             }
 
             ratMovement.maxSpeed = 3f;
-            Debug.Log("AAAAAAAAAAAAAAAAs");
         }
 
         MouseOverHighlight.SetActive(true);
